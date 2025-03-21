@@ -1,0 +1,42 @@
+  Livros
+  insert into editoras(Nome, Endereco) values 
+('Amostradinha','Rua Cheia de agua nº 125'),
+('Cheia de Graça','Rua Feliz, Alameda Contente nº 123'),
+('Ambrosio','Rua Marques de Figueiredo nº 1502');
+
+insert into categorias (Nome) values
+('Ficção'),
+('Romance'),
+('Ação'),
+('Policial'),
+('Auto Ajuda');
+
+insert into autores (Nome) values
+('Matheus'),
+('Márcio Arruda'),
+('Max Trigo');
+
+insert into livros (preco) values
+(25.00),
+(39.00),
+(25.00),
+(19.00);
+
+-Inserção com os relacionamentos-
+-Incluir livro importando dados dasd outras tabelas-
+
+insert into Livros(Titulo, id_editora, id_categoria, id_autor)
+    values
+        ('O mundo depois de amanhã', 
+        (select id_editora from editoras where nome = 'Amostradinha'),
+        (select id_categoria from categorias where nome = 'Ficção'),
+        (select id_autor from autores where nome = 'Matheus')        
+);
+
+
+
+-Mostrar dados-
+select * from categorias c ;
+select * from autores a ;
+select * from editoras e ;
+select * from livros l ;
